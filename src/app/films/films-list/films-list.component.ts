@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-films-list',
@@ -9,12 +8,29 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FilmsListComponent {
   profileForm = this.fb.group({
-    Name: ['Drive', [Validators.required, Validators.minLength(4)]],
+    Name: ['FightClub', [Validators.required, Validators.minLength(4)]],
     Real: [''],
     duree: [''],
     date: [''],
     genre: [''],
   });
+  data: {
+    Name: string;
+    Real: string;
+    duree: string;
+    date: string;
+    genre: string;
+  } = {
+    Name: 'FightClub',
+    Real: 'David Fincher',
+    duree: '2H',
+    date: '1999',
+    genre: 'thriller',
+  };
 
   constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.profileForm.patchValue(this.data);
+  }
 }
