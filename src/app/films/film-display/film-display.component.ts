@@ -8,7 +8,7 @@ import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-film-display',
   templateUrl: './film-display.component.html',
-  styleUrl: './film-display.component.css'
+  styleUrl: './film-display.component.css',
 })
 export class FilmDisplayComponent {
   @Input()
@@ -19,7 +19,10 @@ export class FilmDisplayComponent {
   filmform = this.fb.group(
     {
       titre: this.fb.control('', [Validators.required]),
-      realisateur: this.fb.control(''),
+      real: this.fb.control(''),
+      duree: this.fb.control(''),
+      date: this.fb.control(''),
+      genre: this.fb.control(''),
     },
     { updateOn: 'submit' }
   );
