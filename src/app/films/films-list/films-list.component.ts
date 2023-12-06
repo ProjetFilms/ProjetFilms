@@ -25,8 +25,8 @@ export class FilmsListComponent implements OnInit {
   listFilms: Array<Film> = new Array<Film>();
   profileForm = this.fb.group(
     {
-      Name: ['FightClub', [Validators.required, Validators.minLength(4)]],
-      Real: [''],
+      titre: ['FightClub', [Validators.required, Validators.minLength(4)]],
+      real: [''],
       duree: [''],
       date: [''],
       genre: [''],
@@ -34,14 +34,14 @@ export class FilmsListComponent implements OnInit {
     { updateOn: 'onSubmit' }
   );
   data: {
-    Name: string;
-    Real: string;
+    titre: string;
+    real: string;
     duree: string;
     date: string;
     genre: string;
   } = {
-    Name: 'FightClub',
-    Real: 'David Fincher',
+    titre: 'FightClub',
+    real: 'David Fincher',
     duree: '2H',
     date: '1999',
     genre: 'thriller',
