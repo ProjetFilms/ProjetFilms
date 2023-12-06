@@ -1,4 +1,33 @@
-<div class="form-group">
-    <button type="button" class="btn btn-secondary" (click)='resetForm()'>Reset</button>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css"
+/>
+<form [formGroup]="filmForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Nom</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      formControlName="nom"
+      name="name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="score">Score</label>
+    <input
+      type="number"
+      class="form-control"
+      id="score"
+      formControlName="score"
+      name="score"
+    />
+  </div>
+
+  <div class="form-group">
+    <button type="button" class="btn btn-secondary" (click)="resetForm()">
+      Reset
+    </button>
     <button class="btn btn-secondary">Envoyer</button>
-</div>
+  </div>
+</form>
