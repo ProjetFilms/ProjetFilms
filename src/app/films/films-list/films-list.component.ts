@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Film } from '../films.model';
 
 @Component({
   selector: 'app-films-list',
   templateUrl: './films-list.component.html',
   styleUrl: './films-list.component.css',
 })
-export class FilmsListComponent {
+
+export class FilmsListComponent implements OnInit {
+  listFilms: Array<Film> = new Array<Film>();
   profileForm = this.fb.group({
     Name: ['FightClub', [Validators.required, Validators.minLength(4)]],
     Real: [''],
@@ -32,5 +36,7 @@ export class FilmsListComponent {
 
   ngOnInit() {
     this.profileForm.patchValue(this.data);
+    this.listFilms.push(new Film("Avenger"))
+    this.listFilms.push(new Film("zdaha"))
   }
 }

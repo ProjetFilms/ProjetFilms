@@ -18,3 +18,10 @@
   <label for="genre">Genre : </label>
   <input id="genre" type="text" formControlName="genre" />
 </form>
+<p></p>
+<table>
+    <tr *ngFor = 'let film of listFilms'>
+        <td>{{film.titre}}</td>
+        <td>{{film.realisateur}} </td>
+    </tr>
+</table>
