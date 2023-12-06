@@ -14,6 +14,13 @@ export class FilmsListComponent implements OnInit {
     this.listFilms.push(new Film(1, 'Avenger'));
     this.listFilms.push(new Film(2, 'zdaha'));
   }
+  model!: Film;
+
+  onSubmit() {
+    if (this.profileForm.valid) {
+      this.model = { ...this.model!, ...this.profileForm.value };
+    }
+  }
 
   listFilms: Array<Film> = new Array<Film>();
   profileForm = this.fb.group(
@@ -24,7 +31,7 @@ export class FilmsListComponent implements OnInit {
       date: [''],
       genre: [''],
     },
-    { updateOn: 'submit' }
+    { updateOn: 'onSubmit' }
   );
   data: {
     Name: string;
