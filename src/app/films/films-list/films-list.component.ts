@@ -8,21 +8,21 @@ import { Film } from '../films.model';
   styleUrl: './films-list.component.css',
 })
 export class FilmsListComponent implements OnInit {
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder) {}
   ngOnInit(): void {
     this.profileForm.patchValue(this.data);
-    this.listFilms.push(new Film(1, "Avenger"))
-    this.listFilms.push(new Film(2, "zdaha"))
+    this.listFilms.push(new Film(1, 'Avenger'));
+    this.listFilms.push(new Film(2, 'zdaha'));
   }
 
   listFilms: Array<Film> = new Array<Film>();
   profileForm = this.fb.group({
     Name: ['FightClub', [Validators.required, Validators.minLength(4)]],
     Real: [''],
-      duree: [''],
-      date: [''],
-      genre: [''],
-    });
+    duree: [''],
+    date: [''],
+    genre: [''],
+  });
   data: {
     Name: string;
     Real: string;
@@ -32,10 +32,8 @@ export class FilmsListComponent implements OnInit {
   } = {
     Name: 'FightClub',
     Real: 'David Fincher',
-      duree: '2H',
-      date: '1999',
-      genre: 'thriller',
-    };
-  
+    duree: '2H',
+    date: '1999',
+    genre: 'thriller',
+  };
 }
-
