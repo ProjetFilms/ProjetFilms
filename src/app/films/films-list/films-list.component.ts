@@ -33,7 +33,11 @@ export class FilmsListComponent implements OnInit {
     }, 10);
   }
 
-  updateList(film: Film) {}
+  updateList(film: Film) {
+    let indexItem: number = this.listFilms.findIndex(h => h.id === film.id);
+    this.listFilms[indexItem] = {...this.listFilms[indexItem], ...film};
+
+  }
 
   listFilms: Array<Film> = new Array<Film>();
   profileForm = this.fb.group(
