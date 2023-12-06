@@ -34,7 +34,6 @@ export class FilmsListComponent implements OnInit {
   }
 
   updateList(film: Film) {
-    debugger;
     let indexItem: number = this.filmArray.findIndex(h => h.id === film.id);
     this.filmArray[indexItem] = {...this.filmArray[indexItem], ...film};
   }
