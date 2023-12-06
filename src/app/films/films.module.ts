@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FilmsListComponent } from './films-list/films-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilmService } from './films-list/film.service';
+import { BoldDirective } from './films-list/bold.directive';
 
 @NgModule({
-  declarations: [FilmsListComponent],
+  declarations: [FilmsListComponent, BoldDirective],
   imports: [CommonModule, ReactiveFormsModule],
-  exports: [FilmsListComponent],
+  exports: [FilmsListComponent, BoldDirective],
   providers: [FilmService],
 })
 export class FilmsModule {}
