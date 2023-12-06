@@ -8,6 +8,7 @@ import { Film } from '../films.model';
   styleUrl: './films-list.component.css',
 })
 export class FilmsListComponent implements OnInit {
+
   listFilms: Array<Film> = new Array<Film>();
   profileForm = this.fb.group({
     Name: ['FightClub', [Validators.required, Validators.minLength(4)]],
