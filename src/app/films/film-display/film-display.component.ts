@@ -1,13 +1,16 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Film } from '../films.model';
+import { EventEmitter } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-film-form',
-  templateUrl: './film-list.component.html',
-  styleUrls: ['./film-list.component.css'],
+  selector: 'app-film-display',
+  templateUrl: './film-display.component.html',
+  styleUrl: './film-display.component.css'
 })
-export class FilmsListComponent {
+export class FilmDisplayComponent {
   @Input()
   model: Film | null = null;
   @Output()
