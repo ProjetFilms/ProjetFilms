@@ -16,13 +16,16 @@ export class FilmsListComponent implements OnInit {
   }
 
   listFilms: Array<Film> = new Array<Film>();
-  profileForm = this.fb.group({
-    Name: ['FightClub', [Validators.required, Validators.minLength(4)]],
-    Real: [''],
-    duree: [''],
-    date: [''],
-    genre: [''],
-  });
+  profileForm = this.fb.group(
+    {
+      Name: ['FightClub', [Validators.required, Validators.minLength(4)]],
+      Real: [''],
+      duree: [''],
+      date: [''],
+      genre: [''],
+    },
+    { updateOn: 'submit' }
+  );
   data: {
     Name: string;
     Real: string;
