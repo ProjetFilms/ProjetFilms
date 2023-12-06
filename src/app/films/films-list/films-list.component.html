@@ -1,1 +1,20 @@
-<p>films-list works!</p>
+<form [formGroup]="profileForm">
+  <label for="Name">Name : </label>
+  <input id="name" type="text" formControlName="Name" />
+  <br />
+
+  <label for="Real">Réalisateur : </label>
+  <input id="Real" type="text" formControlName="Real" />
+  <br />
+
+  <label for="duree">Durée : </label>
+  <input id="duree" type="number" formControlName="duree" />
+  <br />
+
+  <label for="date">Date : </label>
+  <input id="date" type="date" formControlName="date" />
+  <br />
+
+  <label for="genre">Genre : </label>
+  <input id="genre" type="text" formControlName="genre" />
+</form>
