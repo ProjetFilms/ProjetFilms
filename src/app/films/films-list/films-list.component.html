@@ -1,10 +1,10 @@
-<form [formGroup]="profileForm">
-  <label for="Name">Name : </label>
-  <input id="name" type="text" formControlName="Name" />
+<form [formGroup]="filmsForm" (ngSubmit)="onSubmit()">
+  <label for="titre">Titre : </label>
+  <input id="titre" type="text" formControlName="titre" />
   <br />
 
-  <label for="Real">Réalisateur : </label>
-  <input id="Real" type="text" formControlName="Real" />
+  <label for="realisateur">Réalisateur : </label>
+  <input id="realisateur" type="text" formControlName="realisateur" />
   <br />
 
   <label for="duree">Durée : </label>
@@ -17,4 +17,15 @@
 
   <label for="genre">Genre : </label>
   <input id="genre" type="text" formControlName="genre" />
+  <button type="submit" class="btn btn-primary">Envoyer</button>
 </form>
+<p></p>
+<table>
+  <tr *ngFor="let film of listFilm">
+    <td>{{ film.titre }}</td>
+    <td>{{ film.realisateur }}</td>
+    <td>{{ film.duree }}</td>
+    <td>{{ film.date }}</td>
+    <td>{{ film.genre }}</td>
+  </tr>
+</table>
