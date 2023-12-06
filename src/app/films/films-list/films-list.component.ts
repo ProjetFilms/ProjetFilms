@@ -36,7 +36,9 @@ export class FilmsListComponent implements OnInit {
 
   ngOnInit() {
     this.profileForm.patchValue(this.data);
-    this.listFilms.push(new Film("Avenger"))
-    this.listFilms.push(new Film("zdaha"))
+    this.listFilms.push(new Film("Avenger", "Joss Whedon", "2h23", "2012", "Action"))
+    this.listFilms.push(new Film("Iron man", "Jon Favreau", "2h06", "2008", "Action"))
+    this.listFilms.push(new Film("Oppenheimer", "Christopher Nolan", "3h00", "2023", "Drame Biographique"))
+
   }
 }
