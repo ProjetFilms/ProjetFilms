@@ -9,6 +9,10 @@ import { Film } from '../films.model';
 })
 export class FilmsListComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
+
+  filmArray: Array<Film> = new Array<Film>();
+  currentFilm: Film | undefined | null;
+
   ngOnInit(): void {
     this.profileForm.patchValue(this.data);
     this.listFilms.push(new Film(1, 'Avenger'));
@@ -21,6 +25,15 @@ export class FilmsListComponent implements OnInit {
       this.model = { ...this.model!, ...this.profileForm.value };
     }
   }
+
+  setCurrentFilm(film: Film) {
+    this.currentFilm = null;
+    setTimeout(() => {
+      this.currentFilm = film;
+    }, 10);
+  }
+
+  updateList(film: Film) {}
 
   listFilms: Array<Film> = new Array<Film>();
   profileForm = this.fb.group(

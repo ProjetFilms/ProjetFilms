@@ -32,7 +32,7 @@
 </form>
 <p></p>
 <table>
-  <tr *ngFor="let film of listFilms">
+  <tr *ngFor="let film of listFilms" (click)="setCurrentFilm(film)">
     <td>{{ film.titre }}</td>
     <td>{{ film.realisateur }}</td>
     <td>{{ film.duree }}</td>
@@ -41,3 +41,8 @@
   </tr>
 </table>
 <div appBold>J'adore les films !</div>
+<app-film-form
+  *ngIf="currentFilm"
+  [model]="currentFilm"
+  (emitFilm)="updateList($event)"
+></app-film-form>
