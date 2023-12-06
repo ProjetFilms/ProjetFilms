@@ -4,7 +4,18 @@
   <br />
 
   <label for="Real">Réalisateur : </label>
-  <input id="Real" type="text" formControlName="Real" />
+  <input id="Real" type="text" formControlName="real" />
+  <div
+    *ngIf="
+      filmsForm.get('real')!.invalid &&
+      (filmsForm.get('real')!.dirty || filmsForm.get('real')!.touched)
+    "
+  >
+    <div *ngIf="filmsForm.get('real')!.errors?.['required']">
+      Real is required.
+    </div>
+  </div>
+
   <br />
 
   <label for="duree">Durée : </label>
@@ -20,8 +31,8 @@
 </form>
 <p></p>
 <table>
-    <tr *ngFor = 'let film of listFilms'>
-        <td>{{film.titre}}</td>
-        <td>{{film.realisateur}} </td>
-    </tr>
+  <tr *ngFor="let film of listFilms">
+    <td>{{ film.titre }}</td>
+    <td>{{ film.realisateur }}</td>
+  </tr>
 </table>

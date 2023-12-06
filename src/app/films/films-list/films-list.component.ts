@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { Film } from '../films.model';
 
 @Component({
@@ -8,16 +7,15 @@ import { Film } from '../films.model';
   templateUrl: './films-list.component.html',
   styleUrl: './films-list.component.css',
 })
-
 export class FilmsListComponent implements OnInit {
   listFilms: Array<Film> = new Array<Film>();
   profileForm = this.fb.group({
     Name: ['FightClub', [Validators.required, Validators.minLength(4)]],
     Real: [''],
-    duree: [''],
-    date: [''],
-    genre: [''],
-  });
+      duree: [''],
+      date: [''],
+      genre: [''],
+    });
   data: {
     Name: string;
     Real: string;
@@ -27,12 +25,11 @@ export class FilmsListComponent implements OnInit {
   } = {
     Name: 'FightClub',
     Real: 'David Fincher',
-    duree: '2H',
-    date: '1999',
-    genre: 'thriller',
-  };
-
-  constructor(private fb: FormBuilder) {}
+      duree: '2H',
+      date: '1999',
+      genre: 'thriller',
+    };
+  }
 
   ngOnInit() {
     this.profileForm.patchValue(this.data);
