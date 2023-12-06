@@ -2,7 +2,7 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css"
 />
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <label for="titre">Titre : </label>
   <input id="titre" type="text" formControlName="titre" />
   <br />
@@ -34,9 +34,9 @@
   <input id="genre" type="text" formControlName="genre" />
   <button type="submit" class="btn btn-primary">Envoyer</button>
 </form>
-<p></p>
+<p></p> -->
 <table>
-  <tr *ngFor="let film of listFilms" (click)="setCurrentFilm(film)">
+  <tr *ngFor="let film of filmArray" (click)="setCurrentFilm(film)">
     <td>{{ film.titre }}</td>
     <td>{{ film.realisateur }}</td>
     <td>{{ film.duree }}</td>

@@ -15,16 +15,16 @@ export class FilmsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileForm.patchValue(this.data);
-    this.listFilms.push(new Film(1, 'Avenger'));
-    this.listFilms.push(new Film(2, 'zdaha'));
+    this.filmArray.push(new Film(1, 'Avenger'));
+    this.filmArray.push(new Film(2, 'zdaha'));
   }
   model!: Film;
 
-  onSubmit() {
-    if (this.profileForm.valid) {
-      this.model = { ...this.model!, ...this.profileForm.value };
-    }
-  }
+  // onSubmit() {
+  //   if (this.profileForm.valid) {
+  //     this.model = { ...this.model!, ...this.profileForm.value };
+  //   }
+  // }
 
   setCurrentFilm(film: Film) {
     this.currentFilm = null;
@@ -34,12 +34,11 @@ export class FilmsListComponent implements OnInit {
   }
 
   updateList(film: Film) {
-    let indexItem: number = this.listFilms.findIndex(h => h.id === film.id);
-    this.listFilms[indexItem] = {...this.listFilms[indexItem], ...film};
-
+    debugger;
+    let indexItem: number = this.filmArray.findIndex(h => h.id === film.id);
+    this.filmArray[indexItem] = {...this.filmArray[indexItem], ...film};
   }
 
-  listFilms: Array<Film> = new Array<Film>();
   profileForm = this.fb.group(
     {
       titre: ['FightClub', [Validators.required, Validators.minLength(4)]],
