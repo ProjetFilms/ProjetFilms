@@ -7,7 +7,7 @@ describe('FilmsListComponent', () => {
   let fixture: ComponentFixture<FilmsListComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({  
       imports: [FilmsListComponent]
     })
     .compileComponents();

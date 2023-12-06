@@ -8,6 +8,12 @@ import { Film } from '../films.model';
   styleUrl: './films-list.component.css',
 })
 export class FilmsListComponent implements OnInit {
+  constructor(private fb: FormBuilder){}
+  ngOnInit(): void {
+    this.profileForm.patchValue(this.data);
+    this.listFilms.push(new Film(1, "Avenger"))
+    this.listFilms.push(new Film(2, "zdaha"))
+  }
 
   listFilms: Array<Film> = new Array<Film>();
   profileForm = this.fb.group({
@@ -30,11 +36,6 @@ export class FilmsListComponent implements OnInit {
       date: '1999',
       genre: 'thriller',
     };
-  }
-
-  ngOnInit() {
-    this.profileForm.patchValue(this.data);
-    this.listFilms.push(new Film("Avenger"))
-    this.listFilms.push(new Film("zdaha"))
-  }
+  
 }
+
