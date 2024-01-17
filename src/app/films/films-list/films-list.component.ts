@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Film } from '../films.model';
-
+import { Observable, Subscription } from 'rxjs';
+import { OnlineStatusService } from '../../../online-status.service';
+import { liveQuery } from 'dexie';
+import { db } from '../../../indexed.db';
+import { FilmService } from '../film.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-films-list',
@@ -9,23 +14,65 @@ import { Film } from '../films.model';
   styleUrl: './films-list.component.css',
 })
 export class FilmsListComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  filmSubscribe!: Subscription;
+  isOnline: boolean = true;
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private filmService: FilmService,
+    private onlineStatusService: OnlineStatusService
+  ) {}
 
   filmArray: Array<Film> = new Array<Film>();
   currentFilm: Film | undefined | null;
 
-  ngOnInit(): void {
-    this.profileForm.patchValue(this.data);
-    this.filmArray.push(new Film(1, 'Avenger'));
-    this.filmArray.push(new Film(2, 'zdaha'));
+  listFilms: Observable<Array<Film>> = liveQuery(() => this.listAllFilms());
+
+  ngOnDestroy(): void {
+    if (this.filmSubscribe) {
+      this.filmSubscribe.unsubscribe();
+    }
   }
+
+  ngOnInit(): void {
+    this.filmService.getAllFilms().subscribe((films) => {
+      this.filmArray = films;
+    });
+
+    if (!this.filmSubscribe) {
+      this.filmSubscribe = this.onlineStatusService.connectionChanged.subscribe(
+        (isOnline) => {
+          if (isOnline) {
+            this.sendItemsFromIndexedDb();
+            this.isOnline = true;
+          } else {
+            this.isOnline = false;
+          }
+        }
+      );
+    }
+  }
+
   model!: Film;
 
-  // onSubmit() {
-  //   if (this.profileForm.valid) {
-  //     this.model = { ...this.model!, ...this.profileForm.value };
-  //   }
-  // }
+  async listAllFilms(): Promise<Array<Film>> {
+    return await db.films.where({}).toArray();
+  }
+
+  async addItem(film: Film) {
+    await db.films.add({ ...film });
+  }
+
+  private async sendItemsFromIndexedDb() {
+    const allItems: Film[] = await db.films.toArray();
+    allItems.forEach((item: Film) => {
+      this.filmService.addFilm(item).subscribe(() => {
+        db.films.delete(item.id).then(() => {
+          console.log(`item ${item.id} sent and deleted locally`);
+        });
+      });
+    });
+  }
 
   setCurrentFilm(film: Film) {
     this.currentFilm = null;

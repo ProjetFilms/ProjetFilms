@@ -15,10 +15,16 @@ export class FilmService {
       'Drame Biographique'
     ),
   ];
-  getAllHeroes(): Observable<Array<Film>> {
+
+  addFilm(item: Film) {
+    throw new Error('Method not implemented.');
+  }
+
+  getAllFilms(): Observable<Array<Film>> {
     return of(this.mockFilmList).pipe(delay(1000));
   }
-  rotateAllHeroes(): Observable<Film> {
+
+  rotateAllFilms(): Observable<Film> {
     return from(this.mockFilmList).pipe(
       concatMap((item) => of(item).pipe(delay(5000)))
     );
