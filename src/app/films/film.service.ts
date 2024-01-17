@@ -16,10 +16,6 @@ export class FilmService {
     ),
   ];
 
-  addFilm(item: Film) {
-    throw new Error('Method not implemented.');
-  }
-
   getAllFilms(): Observable<Array<Film>> {
     return of(this.mockFilmList).pipe(delay(1000));
   }

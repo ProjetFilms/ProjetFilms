@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Film } from '../films.model';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { OnlineStatusService } from '../../../online-status.service';
-import { liveQuery } from 'dexie';
+import { Observable, liveQuery } from 'dexie';
 import { db } from '../../../indexed.db';
 import { FilmService } from '../film.service';
 import { Router } from '@angular/router';
@@ -43,7 +43,6 @@ export class FilmsListComponent implements OnInit {
       this.filmSubscribe = this.onlineStatusService.connectionChanged.subscribe(
         (isOnline) => {
           if (isOnline) {
-            this.sendItemsFromIndexedDb();
             this.isOnline = true;
           } else {
             this.isOnline = false;
@@ -61,17 +60,6 @@ export class FilmsListComponent implements OnInit {
 
   async addItem(film: Film) {
     await db.films.add({ ...film });
-  }
-
-  private async sendItemsFromIndexedDb() {
-    const allItems: Film[] = await db.films.toArray();
-    allItems.forEach((item: Film) => {
-      this.filmService.addFilm(item).subscribe(() => {
-        db.films.delete(item.id).then(() => {
-          console.log(`item ${item.id} sent and deleted locally`);
-        });
-      });
-    });
   }
 
   setCurrentFilm(film: Film) {
