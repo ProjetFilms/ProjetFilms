@@ -1,1 +1,10 @@
-<p>dashboard works!</p>
+<table>
+  <tr *ngFor="let film of filmArray" (click)="setCurrentFilm(film)">
+    <td>{{ film.titre }}</td>
+    <td>{{ film.realisateur }}</td>
+    <td>{{ film.duree }}</td>
+    <td>{{ film.date }}</td>
+    <td>{{ film.genre }}</td>
+  </tr>
+</table>
+<div appBold>J'adore les films !</div>

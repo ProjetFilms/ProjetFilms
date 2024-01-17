@@ -7,7 +7,6 @@ import { FilmDisplayComponent } from './film-display/film-display.component';
 const routes: Routes = [
   { path: 'film/edit/:id', component: FilmDisplayComponent },
   { path: 'film/list', component: FilmsListComponent },
-  { path: '', redirectTo: 'film/list', pathMatch: 'full' },
   //{ path:'**',component:PageNotFoundComponent},
 ];
 
