@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { Film } from '../films.model';
 import { Subscription } from 'rxjs';
 import { OnlineStatusService } from '../../../online-status.service';
 import { Observable, liveQuery } from 'dexie';
 import { db } from '../../../indexed.db';
 import { FilmService } from '../film.service';
-import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-films-list',
@@ -18,7 +17,6 @@ export class FilmsListComponent implements OnInit {
   isOnline: boolean = true;
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private filmService: FilmService,
     private onlineStatusService: OnlineStatusService
   ) {}

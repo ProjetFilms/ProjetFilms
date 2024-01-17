@@ -1,9 +1,8 @@
 import { Component, Input, Output } from '@angular/core';
 import { Film } from '../films.model';
 import { EventEmitter } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
 import { db } from '../../../indexed.db';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-film-display',
