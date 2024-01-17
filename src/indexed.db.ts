@@ -5,7 +5,7 @@ export class IndexedDb extends Dexie {
   films!: Table<Film, number>;
 
   constructor() {
-    super('dbName');
+    super('Films');
     this.version(1).stores({
       films: '++id',
     });

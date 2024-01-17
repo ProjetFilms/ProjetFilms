@@ -69,7 +69,7 @@ export class FilmDisplayComponent {
   }
 
   updateList(film: Film) {
-    let indexItem: number = this.filmArray.findIndex((h) => h.id === film.id);
+    let indexItem: number = this.filmArray.findIndex((f) => f.id === film.id);
     this.filmArray[indexItem] = { ...this.filmArray[indexItem], ...film };
   }
 }
