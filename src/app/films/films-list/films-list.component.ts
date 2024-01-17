@@ -77,7 +77,7 @@ export class FilmsListComponent implements OnInit {
   profileForm = this.fb.group(
     {
       titre: ['FightClub', [Validators.required, Validators.minLength(4)]],
-      real: [''],
+      realisateur: [''],
       duree: [''],
       date: [''],
       genre: [''],
@@ -86,13 +86,13 @@ export class FilmsListComponent implements OnInit {
   );
   data: {
     titre: string;
-    real: string;
+    realisateur: string;
     duree: string;
     date: string;
     genre: string;
   } = {
     titre: 'FightClub',
-    real: 'David Fincher',
+    realisateur: 'David Fincher',
     duree: '2H',
     date: '1999',
     genre: 'thriller',
