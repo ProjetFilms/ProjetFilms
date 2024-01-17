@@ -5,8 +5,8 @@ import { FilmDisplayComponent } from './film-display/film-display.component';
 //import { PageNotFoundComponent } from './404.component';
 
 const routes: Routes = [
-  { path: 'film/edit/:id', component: FilmDisplayComponent },
-  { path: 'film/list', component: FilmsListComponent },
+  { path: 'edit/:id', component: FilmDisplayComponent },
+  { path: 'list', component: FilmsListComponent },
   //{ path:'**',component:PageNotFoundComponent},
 ];
 

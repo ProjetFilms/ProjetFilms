@@ -5,9 +5,9 @@ import { ListFilmsComponent } from './list-films/list-films.component';
 import { EditFilmsComponent } from './edit-films/edit-films.component';
 
 const routes: Routes = [
-  { path: 'admin/edit-films/:id', component: EditFilmsComponent },
-  { path: 'admin/list-films', component: ListFilmsComponent },
-  { path: 'admin/dashboard', component: DashboardComponent },
+  { path: 'edit-films/:id', component: EditFilmsComponent },
+  { path: 'list-films', component: ListFilmsComponent },
+  { path: 'dashboard', component: DashboardComponent },
 ];
 
 @NgModule({
