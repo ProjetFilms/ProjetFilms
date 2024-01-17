@@ -4,6 +4,7 @@ import { Film } from '../films.model';
 import { EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { db } from '../../../indexed.db';
 
 @Component({
   selector: 'app-film-display',
@@ -29,6 +30,8 @@ export class FilmDisplayComponent {
   submitted = false;
   constructor(private fb: FormBuilder) {}
 
+  filmArray: Array<Film> = new Array<Film>();
+
   ngOnInit() {
     this.submitted = false;
 
@@ -44,6 +47,8 @@ export class FilmDisplayComponent {
     if (this.filmform.valid) {
       this.model = { ...this.model!, ...this.filmform.value };
       this.emitFilm.emit(this.model!);
+      console.log(this.model);
+      this.addItem(this.model);
     }
   }
 
@@ -51,5 +56,20 @@ export class FilmDisplayComponent {
     if (this.model !== null) {
       this.filmform.patchValue(this.model);
     }
+  }
+
+  //---
+
+  async listAllFilms(): Promise<Array<Film>> {
+    return await db.films.where({}).toArray();
+  }
+
+  async addItem(film: Film) {
+    await db.films.add({ ...film });
+  }
+
+  updateList(film: Film) {
+    let indexItem: number = this.filmArray.findIndex((h) => h.id === film.id);
+    this.filmArray[indexItem] = { ...this.filmArray[indexItem], ...film };
   }
 }

@@ -3,17 +3,19 @@ import { Film } from './app/films/films.model';
 
 export class IndexedDb extends Dexie {
   films!: Table<Film, number>;
+
   constructor() {
     super('dbName');
     this.version(1).stores({
-      heroes: '++id',
+      films: '++id',
     });
     this.on('populate', () => this.maSuperFonction());
   }
+
   async maSuperFonction() {
     await db.films.bulkAdd([
       {
-        id: 1,
+        id: undefined,
         titre: 'Toto',
         realisateur: 'Toto',
         duree: '1h34',
@@ -21,7 +23,7 @@ export class IndexedDb extends Dexie {
         genre: 'Comique',
       },
       {
-        id: 2,
+        id: undefined,
         titre: 'Toto2',
         realisateur: 'Toto2',
         duree: '1h35',

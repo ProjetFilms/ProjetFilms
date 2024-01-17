@@ -7,7 +7,6 @@ import { Film } from './films.model';
 export class FilmService {
   mockFilmList: Array<Film> = [
     new Film(
-      1,
       'Oppenheimer',
       'Christopher Nolan',
       '3h00',

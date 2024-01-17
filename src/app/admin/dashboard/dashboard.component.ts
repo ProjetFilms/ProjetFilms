@@ -14,8 +14,8 @@ export class DashboardComponent {
   currentFilm: Film | undefined | null;
 
   ngOnInit(): void {
-    this.filmArray.push(new Film(1, 'Avenger'));
-    this.filmArray.push(new Film(2, 'zdaha'));
+    this.filmArray.push(new Film('Avenger'));
+    this.filmArray.push(new Film('zdaha'));
   }
 
   setCurrentFilm(film: Film) {
