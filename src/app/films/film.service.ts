@@ -1,7 +1,7 @@
 import { from, Observable, of } from 'rxjs';
 import { delay, concatMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Film } from '../films.model';
+import { Film } from './films.model';
 
 @Injectable()
 export class FilmService {

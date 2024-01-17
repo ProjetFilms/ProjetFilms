@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Film } from '../films.model';
 
+
 @Component({
   selector: 'app-films-list',
   templateUrl: './films-list.component.html',
@@ -34,8 +35,8 @@ export class FilmsListComponent implements OnInit {
   }
 
   updateList(film: Film) {
-    let indexItem: number = this.filmArray.findIndex(h => h.id === film.id);
-    this.filmArray[indexItem] = {...this.filmArray[indexItem], ...film};
+    let indexItem: number = this.filmArray.findIndex((h) => h.id === film.id);
+    this.filmArray[indexItem] = { ...this.filmArray[indexItem], ...film };
   }
 
   profileForm = this.fb.group(

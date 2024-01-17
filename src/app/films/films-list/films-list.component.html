@@ -37,6 +37,11 @@
 <p></p> -->
 <table>
   <tr *ngFor="let film of filmArray" (click)="setCurrentFilm(film)">
+    <a
+      [routerLink]="['/film', 'edit', film.id]"
+      routerLinkActive="activeLinkClass"
+      >Voir</a
+    >
     <td>{{ film.titre }}</td>
     <td>{{ film.realisateur }}</td>
     <td>{{ film.duree }}</td>
