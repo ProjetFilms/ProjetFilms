@@ -19,7 +19,7 @@ export class FilmDisplayComponent {
   filmform = this.fb.group(
     {
       titre: this.fb.control('', [Validators.required]),
-      real: this.fb.control(''),
+      realisateur: this.fb.control(''),
       duree: this.fb.control(''),
       date: this.fb.control(''),
       genre: this.fb.control(''),
@@ -38,6 +38,7 @@ export class FilmDisplayComponent {
       this.filmform.patchValue(this.model);
     }
   }
+
   onSubmit() {
     this.submitted = true;
     if (this.filmform.valid) {
@@ -45,6 +46,7 @@ export class FilmDisplayComponent {
       this.emitFilm.emit(this.model!);
     }
   }
+
   resetForm() {
     if (this.model !== null) {
       this.filmform.patchValue(this.model);
