@@ -1,5 +1,4 @@
 import { Component, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Film } from '../films.model';
 import { EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
@@ -34,7 +33,6 @@ export class FilmDisplayComponent {
 
   ngOnInit() {
     this.submitted = false;
-
     if (this.model === null) {
       this.model = new Film();
     } else {
